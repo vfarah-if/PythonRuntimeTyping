@@ -1,0 +1,11 @@
+name: runtime-typing
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - jupyter
+  - pydantic
+  - mypy
+  - black
+
