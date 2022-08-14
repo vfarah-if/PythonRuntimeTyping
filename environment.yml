@@ -5,7 +5,11 @@ channels:
 dependencies:
   - python=3.10
   - jupyter
-  - pydantic
-  - mypy
   - black
+  - mypy
+  - pyright
+  - pytype
+  - pydantic
+  - uvicorn
+  - fastapi
 

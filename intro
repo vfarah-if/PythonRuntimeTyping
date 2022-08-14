@@ -1,0 +1,19 @@
+#!/bin/sh
+clear
+echo
+echo
+echo
+toilet -f future --metal "   Runtime Typing in Python"
+echo
+sleep 2
+toilet -f future --gay "   David Mertz, Ph.D."
+echo
+sleep 2
+toilet -f future "   github : DavidMertz"
+echo
+toilet -f future "   / PythonRuntimeTyping"
+echo
+echo
+echo
+sleep 5
+
