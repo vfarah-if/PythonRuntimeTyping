@@ -56,7 +56,7 @@
     ...     path: AnyStr
     ...     size: int
     ...     inode: int
-    >>> finfo = Finfo(path='/path/to/here', size=3.1415, inode=12345678)
+    >>> finfo = Finfo(path='/some/path', size=3.1415, inode=12345678)
     >>> finfo
     Finfo(path=b'/path/to/here', size=3, inode=12345678)
     >>> finfo.json()
