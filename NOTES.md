@@ -11,37 +11,37 @@
 - `mypy finddups.py`
 - `pytype finddups.py` (Google)
 - `pyright finddups.py` (Microsoft)
-    - Misreport (?) on 33 of `.strip()`
-    - Good catch on 177 of possible `None`
+  - Misreport (?) on 33 of `.strip()`
+  - Good catch on 177 of possible `None`
 
 ## Adding type annotations
 
 - `compare finddups.py finddups2.py`
 - Show the equivalence of the modification
-    - `./finddups2.py -l ~/tmp | wc`
+  - `./finddups2.py -l ~/tmp | wc`
 - `mypy finddups2.py`
 - `pytype finddups2.py`
 - `pyright finddups2.py`
 - Correct the type complaints
-    - `compare finddups2.py finddups2a.py`
-    - `mypy finddups2a.py`
-    - `pytype finddups2a.py`
-    - `pyright finddups2a.py`
+  - `compare finddups2.py finddups2a.py`
+  - `mypy finddups2a.py`
+  - `pytype finddups2a.py`
+  - `pyright finddups2a.py`
 
 ## Runtime typing
 
 - `compare finddups2.py finddups3.py`
 - Show the equivalence of the modification
-    - `./finddups3.py -l ~/tmp | wc`
+  - `./finddups3.py -l ~/tmp | wc`
 - `mypy finddups3.py`
 - `pytype finddups3.py`
 - `pyright finddups3.py`
 - Introduce a typing error in `finddups4.py`
-    - `compare finddups3.py finddups4.py`
-    - `mypy finddups3.py`
-    - `pytype finddups3.py`
-    - `pyright finddups3.py`
-    - Not hit at runtime `./finddups4.py -l ~/tmp | wc`
+  - `compare finddups3.py finddups4.py`
+  - `mypy finddups3.py`
+  - `pytype finddups3.py`
+  - `pyright finddups3.py`
+  - Not hit at runtime `./finddups4.py -l ~/tmp | wc`
 
 ## Third-party use of runtime typing
 
