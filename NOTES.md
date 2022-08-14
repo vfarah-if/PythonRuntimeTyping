@@ -2,7 +2,7 @@
 
 - `./intro`
 
-## Without explicit typing
+## (1) Without explicit typing
 
 - Present `finddups.py` and show its general functionality
 - `./finddups.py -l -m20000 ~/tmp`
@@ -14,7 +14,7 @@
   - Misreport (?) on 33 of `.strip()`
   - Good catch on 177 of possible `None`
 
-## Adding type annotations
+## (2) Adding type annotations
 
 - `compare finddups.py finddups2.py`
 - Show the equivalence of the modification
@@ -28,7 +28,7 @@
   - `pytype finddups2a.py`
   - `pyright finddups2a.py`
 
-## Runtime typing
+## (3) Runtime typing
 
 - `compare finddups2.py finddups3.py`
 - Show the equivalence of the modification
@@ -43,7 +43,7 @@
   - `pyright finddups3.py`
   - Not hit at runtime `./finddups4.py -l ~/tmp | wc`
 
-## Third-party use of runtime typing
+## (4) Third-party runtime typing
 
 - Show `runtime_checks.py`
 - Run `runtime_checks.py`
@@ -64,7 +64,7 @@ Finfo(path=b'/path/to/here', size=3, inode=12345678)
 '{"path": "/path/to/here", "size": 3, "inode": 12345678}'
 ```
 
-## Fast-API: Pydantic as a microservice
+## (5) Fast-API: Pydantic as a microservice
 
 - Launch server: `uvicorn main:app --reload`
 - `cp servers/hello.py main.py`
@@ -96,3 +96,14 @@ curl -s -X POST http://localhost:8000/finfo \
 -H 'Content-Type: application/json' \
 -d '{"path":"/some/path","size":null,"inode":99999}' | jq
 ```
+
+## (6) Typer: Pydantic command-line parsing
+
+- `compare finddups3.py finddups-typer.py`
+- `mypy finddups-typer.py`
+- `./finddups.py --help`
+- `./findups-typer.py --help`
+- `./finddups.py -m not-an-int ~/tmp`
+- `./finddups-typer.py -m not-an-int ~/tmp`
+- `./finddups-typer.py -l | wc` (same as other versions)
+- `./finddups-typer.py --<tab>`

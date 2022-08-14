@@ -12,4 +12,5 @@ dependencies:
   - pydantic
   - uvicorn
   - fastapi
+  - typer
 

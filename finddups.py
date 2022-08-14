@@ -111,7 +111,9 @@ def parallel_hash(finfos, pool):
         return hashes
 
     # Otherwise, split up the inodes with one versus several paths
-    unique_inodes = [f[0] for _, f in group_by_key(finfos, INODE, Finfo) if len(f) == 1]
+    unique_inodes = [
+        f[0] for _, f in group_by_key(finfos, INODE, Finfo) if len(f) == 1
+    ]
     dup_inodes = [f for _, f in group_by_key(finfos, key=INODE) if len(f) > 1]
 
     # Use the pool to parallelize distinct inodes

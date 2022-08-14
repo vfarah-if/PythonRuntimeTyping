@@ -128,8 +128,12 @@ def parallel_hash(
         return hashes
 
     # Otherwise, split up the inodes with one versus several paths
-    unique_inodes = [f[0] for _, f in group_by_key(finfos, "inode") if len(f) == 1]
-    dup_inodes = [f for _, f in group_by_key(finfos, key="inode") if len(f) > 1]
+    unique_inodes = [
+        f[0] for _, f in group_by_key(finfos, "inode") if len(f) == 1
+    ]
+    dup_inodes = [
+        f for _, f in group_by_key(finfos, key="inode") if len(f) > 1
+    ]
 
     # Use the pool to parallelize distinct inodes
     hashes = pool.map(hash_content, unique_inodes)
@@ -196,7 +200,9 @@ def get_path_infos(
         print(f"Looked up  {count:,} file sizes", file=stderr)
 
 
-def find_duplicates(dirs: Iterable[str | PathLike[Any]], opts: optparse.Values) -> None:
+def find_duplicates(
+    dirs: Iterable[str | PathLike[Any]], opts: optparse.Values
+) -> None:
     "Find the duplicate files in the given root directory."
     # NOTE: this is a kludge to make mypy happy.  None is a *possible* return
     # value for cpu_count(), but it will not happy on common architectures
