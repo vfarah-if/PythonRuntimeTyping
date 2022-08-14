@@ -50,17 +50,19 @@
 - Typing error is clearer and more remediable than traceback
 - Mild type coercion in models;
 
-    >>> from typing import AnyStr
-    >>> from pydantic import BaseModel
-    >>> class Finfo(BaseModel):
-    ...     path: AnyStr
-    ...     size: int
-    ...     inode: int
-    >>> finfo = Finfo(path='/some/path', size=3.1415, inode=12345678)
-    >>> finfo
-    Finfo(path=b'/path/to/here', size=3, inode=12345678)
-    >>> finfo.json()
-    '{"path": "/path/to/here", "size": 3, "inode": 12345678}'
+```python
+>>> from typing import AnyStr
+>>> from pydantic import BaseModel
+>>> class Finfo(BaseModel):
+...     path: AnyStr
+...     size: int
+...     inode: int
+>>> finfo = Finfo(path='/some/path', size=3.1415, inode=12345678)
+>>> finfo
+Finfo(path=b'/path/to/here', size=3, inode=12345678)
+>>> finfo.json()
+'{"path": "/path/to/here", "size": 3, "inode": 12345678}'
+```
 
 ## Fast-API: Pydantic as a microservice
 
@@ -73,19 +75,24 @@
 - `cp servers/post-model.py main.py`
 - POST some data:
 
-    curl -s -X POST http://localhost:8000/finfo \
-    -H 'Content-Type: application/json' \
-    -d '{"path":"/some/path","size":100,"inode":99999}' | jq
+```bash
+curl -s -X POST http://localhost:8000/finfo \
+-H 'Content-Type: application/json' \
+-d '{"path":"/some/path","size":100,"inode":99999}' | jq
+```
 
 - POST some not-quite-right data to coerce:
 
-    curl -s -X POST http://localhost:8000/finfo \
-    -H 'Content-Type: application/json' \
-    -d '{"path":"/some/path","size":3.14,"inode":99999}' | jq
+```bash
+curl -s -X POST http://localhost:8000/finfo \
+-H 'Content-Type: application/json' \
+-d '{"path":"/some/path","size":3.14,"inode":99999}' | jq
+```
 
 - POST some very-wrong data:
 
-    curl -s -X POST http://localhost:8000/finfo \
-    -H 'Content-Type: application/json' \
-    -d '{"path":"/some/path","size":null,"inode":99999}' | jq
-
+```bash
+curl -s -X POST http://localhost:8000/finfo \
+-H 'Content-Type: application/json' \
+-d '{"path":"/some/path","size":null,"inode":99999}' | jq
+```
